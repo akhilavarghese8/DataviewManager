@@ -1,0 +1,21 @@
+.error-txt-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.not-found-txt {
+  font-size: 8rem;
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.error-msg {
+  font-size: 2rem;
+  margin-top: 3rem;
+  color: #333; 
+}

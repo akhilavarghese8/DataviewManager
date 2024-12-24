@@ -1,0 +1,15 @@
+:host ::ng-deep .p-datatable {
+  margin: 20px;
+}
+:host ::ng-deep .p-datatable-tbody > tr {
+  height: 3rem;
+
+:host ::ng-deep .p-skeleton {
+  width: 100%;
+  height: 1.5rem;
+}
+
+:host ::ng-deep .p-datatable {
+  overflow-y: hidden;
+}
+}

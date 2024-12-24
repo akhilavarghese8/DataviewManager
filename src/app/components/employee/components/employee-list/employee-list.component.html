@@ -1,0 +1,48 @@
+
+
+<div class="header">
+  <h1 class="page-title">Employee Management</h1>
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search"
+      (input)="filterEmployees($event)"
+      class="search-box"
+    />
+    <button class="search-btn">
+      <i class="pi pi-search"></i>
+    </button>
+  </div>
+  <button class="add-btn" (click)="addEmployee()">Add Employee</button>
+</div>
+
+<p-table
+  [value]="paginatedEmployees"
+  [lazy]="true"
+  [paginator]="true"
+  [rows]="rowsPerPage"
+  [totalRecords]="totalEmployees"
+  (onLazyLoad)="lazyLoad($event)">
+
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>EMPLOYEE NAME</th>
+      <th>CONTACT NO</th>
+      <th>EMAIL</th>
+      <th>ADDRESS</th>
+      <th>ACTION</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-employee let-rowIndex="rowIndex">
+    <tr>
+      <td [pTooltip]="employee.name" tooltipPosition="bottom">{{ employee.name }}</td>
+      <td>{{ employee.contact }}</td>
+      <td>{{ employee.email }}</td>
+      <td [pTooltip]="employee.address" tooltipPosition="top">{{ employee.address }}</td>
+      <td>
+        <button class="delete-btn" (click)="deleteEmployee(rowIndex)">Delete</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,62 @@
+<p-table
+  [value]="apiData"
+  [paginator]="true"
+  [rows]="10"
+  [totalRecords]="totalRecords"
+  [lazy]="true"
+  [loading]="loading"
+  (onLazyLoad)="loadData($event)"
+  [globalFilterFields]="['id', 'name', 'date']"
+  [tableStyle]="{'min-width': '10rem'}"
+>
+  <p-header>
+    <div class="p-d-flex p-ai-center">
+      <p-inputText
+        [formControl]="globalFilter"
+        type="search"
+        placeholder="Global Search"
+        (input)="onGlobalFilter($event)"
+      ></p-inputText>
+    </div>
+  </p-header>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="id" id="id" style="width:10%">
+        Id <p-sortIcon field="id"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" id="name" style="width:10%">
+        Name <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="date" id="date" style="width:10%">
+        Date <p-sortIcon field="date"></p-sortIcon>
+      </th>
+    </tr>
+
+    <tr>
+      <th>
+        <input pInputText type="text" (input)="onColumnFilter($event, 'id')" placeholder="Filter by ID" />
+      </th>
+      <th>
+        <input pInputText type="text" (input)="onColumnFilter($event, 'name')" placeholder="Filter by Name" />
+      </th>
+      <th>
+        <input pInputText type="text" (input)="onColumnFilter($event, 'date')" placeholder="Filter by Date" />
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-apiData>
+    <tr>
+      <td>{{ apiData.id }}</td>
+      <td>{{ apiData.name }}</td>
+      <td>{{ apiData.date }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<h1 class="centered-heading">Employee Form</h1>
+
+
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Employee Name</label>
+    <input type="text" id="name" formControlName="name">
+    <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched" class="error">
+      Employee Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="contact">Contact No</label>
+    <input type="text" id="contact" formControlName="contact">
+    <div *ngIf="employeeForm.get('contact')?.invalid && employeeForm.get('contact')?.touched" class="error">
+      Contact No is required and must be 10 digits.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email">
+    <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched" class="error">
+      Enter a valid email.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <textarea id="address" formControlName="address"></textarea>
+    <div *ngIf="employeeForm.get('address')?.invalid && employeeForm.get('address')?.touched" class="error">
+      Address is required.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="employeeForm.invalid" class="submit-btn">Submit</button>
+</form>
